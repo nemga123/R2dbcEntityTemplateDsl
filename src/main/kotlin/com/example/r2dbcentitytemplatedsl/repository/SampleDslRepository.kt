@@ -21,8 +21,11 @@ class SampleDslRepository(
         return withContext(Dispatchers.IO) {
             r2dbcEntityTemplate.selectOne(SampleEntity::class) {
                 where {
-                    SampleEntity::id isEqualTo id
-                    SampleEntity::name isEqualTo name
+                    or {
+                        SampleEntity::id isEqualTo id
+                        SampleEntity::name isEqualTo name
+                    }
+
                 }
             }.awaitSingleOrNull()
         }

@@ -1,7 +1,6 @@
 package com.example.r2dbcentitytemplatedsl.dsl
 
 import org.springframework.data.relational.core.query.Criteria
-import org.springframework.data.relational.core.query.CriteriaDefinition
 import kotlin.reflect.KProperty1
 
 @R2dbcDsl
@@ -14,7 +13,12 @@ class CriteriaBuilder {
     }
 
     fun or(criteria: CriteriaBuilder.() -> Unit) {
-        val newCriteria = Criteria.empty().or(CriteriaBuilder().apply(criteria).criteriaList)
+        val newCriteriaList = CriteriaBuilder().apply(criteria).criteriaList
+
+        var newCriteria = Criteria.empty()
+        newCriteriaList.forEach {
+            newCriteria = newCriteria.or(it)
+        }
         criteriaList.add(newCriteria)
     }
 

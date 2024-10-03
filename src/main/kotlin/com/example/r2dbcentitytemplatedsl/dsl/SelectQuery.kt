@@ -26,6 +26,7 @@ class SelectQuery {
         if (!criteria.isEmpty) {
             throw RuntimeException("Already defined where Statement")
         }
+
         this.criteria = Criteria.empty().and(CriteriaBuilder().apply(criteriaBuilder).criteriaList)
     }
 

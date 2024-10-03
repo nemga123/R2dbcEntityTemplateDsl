@@ -20,8 +20,8 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
-    implementation("io.asyncer:r2dbc-mysql:1.0.4")
-
+    implementation("io.asyncer:r2dbc-mysql:1.3.0")
+    implementation("org.springframework.boot:spring-boot-starter-logging:3.3.0")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
